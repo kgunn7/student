@@ -1,0 +1,32 @@
+while True:
+    print('\nStudent Management System')
+    print('1. Add student')
+    print('2. Remove student')
+    print('3. Add grade to student')
+    print('4. Display students')
+    print('5. Exit')
+
+    choice = input('Select an option: ')
+
+    if choice == '1':
+        name = input('Enter the student name: ')
+        roll_number = input('Enter the student roll number: ')
+        student_manager.add_student(name, roll_number)
+    elif choice == '2':
+        roll_number = input('Enter the student roll number to remove: ')
+        student_manager.remove_student(roll_number)
+    elif choice == '3':
+        roll_number = input('Enter the student roll number: ')
+        grade = input('Enter the grade: ')
+        student = student_manager.get_student_by_roll_number(roll_number)
+        if student:
+            student.add_grade(grade)
+            print(f'Grade {grade} added to student with roll number {roll_number}.')
+        else:
+            print(f'Student with roll number "{roll_number}" not found.')
+    elif choice == '4':
+        student_manager.display_students()
+    elif choice == '5':
+        break
+    else:
+        print('Invalid choice. Please try again.')
